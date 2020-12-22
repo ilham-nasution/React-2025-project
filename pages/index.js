@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>React 2025 Project</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,18 +18,15 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
+          <code className={styles.code}>{auth?.user?.email}</code>
         </p>
-        <div>
+        {auth.user ? (
+          <button onClick={() => auth.signOut()}>Sign out</button>
+        ) : (
           <button onClick={() => auth.signInWithGitHub()}>
             Sign in with github
           </button>
-          <p>{auth?.user?.email}</p>
-          {auth?.user && (
-            <button onClick={() => auth.signOut()}>Sign out</button>
-          )}
-        </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
